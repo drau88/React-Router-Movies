@@ -36,10 +36,15 @@ export default function App () {
 
       <div>Replace this Div with your Routes</div>
       <Link to='/movie-list'>Obtain Movies</Link>
-      <Route path={`/movie-list/`}>
+
+      <Switch>
+      <Route path={`/movie-list/:id`}>
         <Movie></Movie>
+        </Route> 
+      <Route path={`/movie-list/`}>
         <MovieList movieList={movieList}></MovieList>
       </Route>
+      </Switch>
     </div>
   );
 }

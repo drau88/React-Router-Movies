@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 export default function Movie(props) {
-  const [movie, setMovie] = useState();
+  const [movie, setMovie] = useState({});
 
-  let id = useParams();
+  let { id } = useParams();
   // Change ^^^ that line and use a hook to obtain the :id parameter from the URL
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function Movie(props) {
         // Study this response with a breakpoint or log statements
         // and set the response data as the 'movie' slice of state
         console.log(response);
+        setMovie(response.data);
       })
       .catch(error => {
         console.error(error);
@@ -30,6 +31,7 @@ export default function Movie(props) {
   }
 
   const { title, director, metascore, stars } = movie;
+  console.log(movie);
 
   return (
     <div className="save-wrapper">
@@ -43,11 +45,11 @@ export default function Movie(props) {
         </div>
         <h3>Actors</h3>
 
-        {stars.map(star => (
+        {/* {stars.map(star => (
           <div key={star} className="movie-star">
             {star}
           </div>
-        ))}
+        ))} */}
       </div>
       <div className="save-button">Save</div>
     </div>
