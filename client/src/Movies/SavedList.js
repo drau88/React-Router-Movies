@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 export default function SavedList(props) {
   return (
@@ -7,7 +9,9 @@ export default function SavedList(props) {
       {props.list.map(movie => (
         <span className="saved-movie">{movie.title}</span>
       ))}
+      <NavLink to={'/'}>
       <div className="home-button">Home</div>
+      </NavLink>
     </div>
   );
 }
